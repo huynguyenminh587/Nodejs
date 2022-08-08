@@ -1,0 +1,2418 @@
+{
+  "info": {
+    "description": "This is a sample Petstore server. You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+    "version": "1.0.0",
+    "title": "CBD - Rionlab",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "develop@rionlab.com",
+      "name": "API Support"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "swagger": "2.0",
+  "host": "54.174.194.79:8061",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "test",
+      "description": "Everything about test"
+    },
+    {
+      "name": "user",
+      "description": "Everything about user"
+    },
+    {
+      "name": "contact",
+      "description": "Everything about product"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Login designer",
+        "description": "Login by using email and password",
+        "operationId": "loginDesignerOrCompany",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "auth",
+            "description": "encode email:password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          },
+          "400": {
+            "description": "Login failure.",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/login/admin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Login account",
+        "description": "Login by using nick_name and password",
+        "operationId": "loginByEmailAndPassword",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "auth",
+            "description": "encode email:password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          },
+          "400": {
+            "description": "Login failure.",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Create user",
+        "description": "Register account  user",
+        "operationId": "registerUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user\n Encode field email, password, account_number. \n You can add a referrerid field if you like ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body_Request_User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/user/postal-code": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get info to zip code",
+        "operationId": "postalCode",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "ja",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "code",
+            "description": " Number zip code,ex: 0250067",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZipCode"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Can not generate new code when old code is created in less than 30 seconds"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/confirm/{email}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "confirm account",
+        "description": "confirm account",
+        "operationId": "confirmedAccount",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "description": "Encode email",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Confirm_Account"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/test/decode": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "summary": "Decode text",
+        "operationId": "dencodeText",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "text",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "The text user want decode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/test/encode": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "summary": "Encode text",
+        "operationId": "encodeText",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "text",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "The text user want encode"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "get info user",
+        "description": "Get Infomation user",
+        "operationId": "getUserInfo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Edit profile user",
+        "description": "Edit profile of user.\n Encode field email, password, account_number. ",
+        "operationId": "updateProfile",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Edit profile of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/user/block": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "User remove account",
+        "description": "User remove account.",
+        "operationId": "deleteUserByToken",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "get info user by id",
+        "description": "Get Infomation user by id",
+        "operationId": "getProfileById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Id designer",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/user/deposit-bonus": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get list his deposit and bonus of user",
+        "operationId": "getHistoryDepositAndBonus",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "ja",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": " Number page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": " Number limit",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_List_And_Count_Deposit_Bonus"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "System error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forgot-password/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Forgot password",
+        "description": "Forgot password",
+        "operationId": "forgotPassword",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Forgot password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Body_Forgot_Passwod"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_Success_Forgot_Password"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/forgot-password/verify": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Verify OTP ",
+        "description": "Verfify OTP when forgot password",
+        "operationId": "verifyCodeOfForgotPass",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Verify OTP",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Body_VerifyOtp_Forgot_Passwod"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_Success_Forgot_Password"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/forgot-password/send": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Send code forgot password",
+        "description": "Send the code to the email when the user performs the forgot password function",
+        "operationId": "sendCode",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "description": "Encode email",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_Send_Success_Forgot_Password"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "logout account",
+        "description": "logout",
+        "operationId": "logout",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Logout"
+            }
+          },
+          "400": {
+            "description": "Login failure.",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact/create": {
+      "post": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "Insert info contact",
+        "description": "Insert infomation contact",
+        "operationId": "insertContact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created OTP code",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Insert_Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Insert_Contact"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/posts/list-image": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "Update list images",
+        "description": "Update list images",
+        "operationId": "insertListImage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created OTP code",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Body_List_Image"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_List_Image_Post"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/user": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "get list user (for admin)",
+        "description": "get list user (for admin)",
+        "operationId": "getListUser",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Number using paging",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Number location on page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "status",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "text",
+            "description": "text search",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "date",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_List_User"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "update status",
+        "description": "admin approve user is used system",
+        "operationId": "updateStatus",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update status of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body_Confirm_User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{id}": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "detail user",
+        "description": "detail user",
+        "operationId": "getUserById",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "user id",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Edit_user"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "Delete user",
+        "description": "Delete user",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "Role user",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "path",
+            "description": "id user",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/block": {
+      "put": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "block user",
+        "description": "block user",
+        "operationId": "blockUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "block user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body_Block_User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "get list info contact",
+        "description": "get list infomation contact",
+        "operationId": "listContact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "date",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "text",
+            "description": "text search",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Insert_Contact"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact/user": {
+      "get": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "get list contact by email",
+        "description": "get list contact by email",
+        "operationId": "getListContactByEmail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "date",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "text",
+            "description": "text search",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Insert_Contact"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact/detail": {
+      "get": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "detail info contact",
+        "description": "detail infomation contact",
+        "operationId": "detailContact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Insert_Contact"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact/rep-contact": {
+      "post": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "rep-contact info contact",
+        "description": "rep-contact infomation contact",
+        "operationId": "replyContact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created OTP code",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Body_Reply_Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Message"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/contact/search": {
+      "post": {
+        "tags": [
+          "contact"
+        ],
+        "summary": "rep-contact info contact",
+        "description": "rep-contact infomation contact",
+        "operationId": "replyContact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "type": "string",
+            "description": "type = 1 role designer, type = 2 company, type = 3"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created OTP code",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request_Body_Search_Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Respone_Insert_Contact"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/payment-history": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "get list payment history",
+        "description": "get list payment every month of user",
+        "operationId": "getListHistoryPayment",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Number using paging",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Number location on page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "date",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "text",
+            "description": "text search",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Payment_History"
+            }
+          },
+          "400": {
+            "description": "System was error",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/bonus": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "get list bonus all user",
+        "description": "get list bonus all user",
+        "operationId": "getListBonus",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Number using paging",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Number location on page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "Status of bonus",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "date",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "text",
+            "description": "text search",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_List_And_Count_Deposit_Bonus"
+            }
+          },
+          "400": {
+            "description": "System was error",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/bonus/detail-info-bonus-user": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "get total bonus user",
+        "description": "Get bonus in month and total bonus of user",
+        "operationId": "getInfoAndTotolBonusOfUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "locale",
+            "default": "en",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "description": "id of bonus",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_Total_Bonus"
+            }
+          },
+          "400": {
+            "description": "Email is exist",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin/bonus/detail-each-user": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "get list bonus each user",
+        "description": "get list bonus each user",
+        "operationId": "getDetailListUserBonus",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Number using paging",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Number location on page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "member_id",
+            "description": "user id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "locale",
+            "required": true,
+            "default": "en",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Response_List_And_Count_Deposit_Bonus"
+            }
+          },
+          "400": {
+            "description": "System was error",
+            "schema": {
+              "$ref": "#/definitions/Error_Response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error_Response": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "Login": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message",
+        "token"
+      ]
+    },
+    "Register": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "The text email want encode"
+        }
+      }
+    },
+    "Respone_Confirm_Account": {
+      "type": "object",
+      "properties": {
+        "massege": {
+          "example": "active successful",
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "123456789"
+        },
+        "email": {
+          "format": "email",
+          "type": "string",
+          "example": "tienanhktkaht@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        },
+        "user_name": {
+          "type": "string",
+          "example": "anhvt"
+        },
+        "full_name": {
+          "type": "string",
+          "example": "tien anh vo"
+        },
+        "full_name_kana": {
+          "type": "string",
+          "example": "vo tien anh"
+        },
+        "phone": {
+          "type": "string",
+          "example": "0966666666"
+        },
+        "postal_code": {
+          "type": "string",
+          "example": "123456"
+        },
+        "province": {
+          "type": "number",
+          "example": "da nang"
+        },
+        "city": {
+          "type": "string",
+          "example": "lien chieu"
+        },
+        "total_user_bonus": {
+          "type": "integer",
+          "example": "10"
+        },
+        "total_bonus_month": {
+          "type": "number",
+          "example": 3000
+        },
+        "total_balance": {
+          "type": "number",
+          "example": 6000
+        },
+        "street_and_apartment": {
+          "type": "string",
+          "example": "54 nguyen luong bang"
+        },
+        "bank": {
+          "type": "object",
+          "$ref": "#/definitions/Body_Bank_Account"
+        }
+      }
+    },
+    "Body_Request_User": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "format": "email",
+          "type": "string",
+          "example": "tienanhktkaht@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        },
+        "user_name": {
+          "type": "string",
+          "example": "anhvt"
+        },
+        "full_name": {
+          "type": "string",
+          "example": "tien anh vo"
+        },
+        "full_name_kana": {
+          "type": "string",
+          "example": "vo tien anh"
+        },
+        "phone": {
+          "type": "string",
+          "example": "0966666666"
+        },
+        "postal_code": {
+          "type": "string",
+          "example": "123456"
+        },
+        "province": {
+          "type": "number",
+          "example": "da nang"
+        },
+        "city": {
+          "type": "string",
+          "example": "lien chieu"
+        },
+        "street_and_apartment": {
+          "type": "string",
+          "example": "54 nguyen luong bang"
+        },
+        "bank": {
+          "type": "object",
+          "$ref": "#/definitions/Body_Bank_Account"
+        },
+        "card": {
+          "type": "object",
+          "$ref": "#/definitions/Request_Add_Card"
+        }
+      }
+    },
+    "Body_Bank_Account": {
+      "type": "object",
+      "properties": {
+        "bank_name": {
+          "type": "string",
+          "example": "vietcombank"
+        },
+        "branch_name": {
+          "type": "number",
+          "example": "vietcombank thanh khe"
+        },
+        "account_type": {
+          "type": "number",
+          "example": 1
+        },
+        "account_number": {
+          "type": "string",
+          "example": "4444555566"
+        }
+      }
+    },
+    "Request_Add_Card": {
+      "type": "object",
+      "properties": {
+        "card_name": {
+          "example": "ABC DEF",
+          "type": "string"
+        },
+        "card_no": {
+          "type": "string"
+        },
+        "expiration_date": {
+          "type": "string"
+        },
+        "security_code": {
+          "type": "string"
+        }
+      }
+    },
+    "Response_Card": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "card_name": {
+          "example": "ABC DEF",
+          "type": "string"
+        },
+        "card_no": {
+          "type": "string"
+        },
+        "expiration_date": {
+          "type": "string"
+        },
+        "security_code": {
+          "type": "string"
+        }
+      }
+    },
+    "Request_Upload_Img": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "o or 1",
+          "type": "number"
+        },
+        "extension": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "base64": {
+          "description": "base64",
+          "type": "string"
+        }
+      }
+    },
+    "Respone_Upload_Img": {
+      "type": "object",
+      "properties": {
+        "link": {
+          "type": "string"
+        }
+      }
+    },
+    "Response_List_And_Count_Deposit_Bonus": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "total page"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deposit_Or_Bonus"
+          }
+        }
+      }
+    },
+    "Deposit_Or_Bonus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "number_of_introducer": {
+          "type": "number"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "member_id": {
+          "type": "number"
+        }
+      }
+    },
+    "Respone_Edit_user": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "format": "email",
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "nick_name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "url_avatar": {
+          "type": "string",
+          "format": "url"
+        },
+        "role": {
+          "type": "number",
+          "format": "int32"
+        }
+      }
+    },
+    "Request_Body_Forgot_Passwod": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "encode text"
+        },
+        "code": {
+          "type": "string",
+          "description": "encode text"
+        },
+        "password": {
+          "type": "string",
+          "description": "encode text"
+        }
+      }
+    },
+    "Response_Success_Forgot_Password": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Reset password is successfully"
+        }
+      }
+    },
+    "Request_Body_VerifyOtp_Forgot_Passwod": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "encode text"
+        },
+        "code": {
+          "type": "string",
+          "description": "encode text"
+        }
+      }
+    },
+    "Response_Send_Success_Forgot_Password": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Please check your email let get code"
+        }
+      }
+    },
+    "Logout": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Respone_Message": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "is_delete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Request_Insert_Contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "title": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "Respone_Insert_Contact": {
+      "type": "object",
+      "properties": {
+        "company_name": {
+          "type": "string"
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "ZipCode": {
+      "type": "object",
+      "properties": {
+        "pref": {
+          "type": "object",
+          "$ref": "#/definitions/Prefecture"
+        },
+        "city": {
+          "type": "object",
+          "$ref": "#/definitions/City"
+        }
+      }
+    },
+    "Prefecture": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "岩手県",
+          "description": "Japan Prefecture Name"
+        },
+        "code": {
+          "type": "string",
+          "example": "03",
+          "description": "Japan Prefecture Code"
+        },
+        "kana": {
+          "type": "string",
+          "example": "ｲﾜﾃｹﾝ",
+          "description": "Japan Prefecture Name type kana"
+        }
+      }
+    },
+    "City": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "岩手県",
+          "description": "Japan City Name type kana"
+        },
+        "code": {
+          "type": "string",
+          "example": "03",
+          "description": "Japan City Code"
+        },
+        "kana": {
+          "type": "string",
+          "example": "ｲﾜﾃｹﾝ",
+          "description": "Japan City Name type kana"
+        }
+      }
+    },
+    "Body_Images": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "extension": {
+          "type": "string"
+        },
+        "base64": {
+          "type": "string"
+        }
+      }
+    },
+    "Request_Body_List_Image": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Body_Images"
+      }
+    },
+    "Respone_List_Image_Post": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/List_Images"
+      }
+    },
+    "List_Images": {
+      "type": "object",
+      "properties": {
+        "index_image": {
+          "type": "integer"
+        },
+        "image_url": {
+          "type": "string"
+        }
+      }
+    },
+    "Respone_List_User": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "total page"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "Body_Block_User": {
+      "type": "object",
+      "description": "if is_lock = 1",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "role": {
+          "type": "integer"
+        },
+        "is_lock": {
+          "type": "integer"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "Body_Confirm_User": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "hearts": {
+          "type": "integer"
+        },
+        "diamonds ": {
+          "type": "integer"
+        },
+        "clubs": {
+          "type": "integer"
+        },
+        "spades": {
+          "type": "integer"
+        }
+      }
+    },
+    "Request_Body_Reply_Contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title_reply": {
+          "type": "string"
+        },
+        "content_reply": {
+          "type": "string"
+        }
+      }
+    },
+    "Request_Body_Search_Contact": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "respondent": {
+          "type": "string"
+        },
+        "product_type_id": {
+          "type": "integer",
+          "example": [
+            1,
+            2
+          ]
+        },
+        "budget_id": {
+          "type": "integer",
+          "example": [
+            1,
+            2
+          ]
+        },
+        "status_response": {
+          "type": "integer",
+          "example": [
+            1,
+            2
+          ]
+        },
+        "support_time": {
+          "type": "integer",
+          "example": [
+            1324324324,
+            2234234234
+          ],
+          "description": "timestamp"
+        },
+        "created_at": {
+          "type": "integer",
+          "example": [
+            1324324324,
+            2234234234
+          ],
+          "description": "timestamp"
+        }
+      }
+    },
+    "Payment_History": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": "1"
+        },
+        "amount": {
+          "type": "number",
+          "example": "11000"
+        },
+        "card_name": {
+          "type": "string",
+          "example": "NGUYEN VAN A"
+        },
+        "expiration_date": {
+          "type": "string",
+          "example": "2020/10"
+        },
+        "security_code": {
+          "type": "string",
+          "example": "123"
+        },
+        "referrer_id": {
+          "type": "string",
+          "example": "4444555566"
+        },
+        "status": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    },
+    "Response_Total_Bonus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": "1"
+        },
+        "balance": {
+          "type": "number",
+          "example": "11000"
+        },
+        "member_id": {
+          "type": "string",
+          "example": "4444555566"
+        },
+        "total_bonus_month": {
+          "type": "number",
+          "example": "1111"
+        },
+        "total_user_bonus": {
+          "type": "number",
+          "example": "1111"
+        }
+      }
+    }
+  }
+}

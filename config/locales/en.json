@@ -1,0 +1,119 @@
+{
+    "COMMON": {
+        "USER_EXIST": "User was exist.",
+        "CREATE_DATA_IS_SUCCESSFULLY": "The data was created successfully.",
+        "CREATE_DATA_IS_UNSUCCESSFULLY": "Create data is unsuccessfully.",
+        "UPDATE_DATA_IS_SUCCESSFULLY": "Update data is successfully.",
+        "UPDATE_DATA_IS_UNSUCCESSFULLY": "Update data is unsuccessfully.",
+        "DELETE_DATA_IS_SUCCESSFULLY": "Delete data is successfully.",
+        "DELETE_DATA_IS_UNSUCCESSFULLY": "Delete data is unsuccessfully.",
+        "RESTORE_DATA_IS_SUCCESSFULLY": "Restore data is successfully.",
+        "DATA_NOT_AVAILABLE": "Data not available.",
+        "DATA_ALREADY_EXIST": "Data already exists.",
+        "THE_SYSTEM_IS_FAIL": "The system is fail. Please come back later.",
+        "THE_SYSTEM_WENT_WRONG": "Sorry something went wrong. Please try again or send contact to the administrator.",
+        "USER_NOT_FOUND": "User not found.",
+        "EMAIL_IS_EXIST": "Email is exist.",
+        "EMAIL_IS_NOT_EXIST": "Email is not exist."
+    },
+    "USER": {
+        "REGISTER": {
+            "SOCIAL_ID_NOT_EMPTY": "Social Id is not empty.",
+            "ACCOUNT_WAS_REGISTER_BEFORE": "Account was register before."
+        },
+        "LOGIN": {
+            "EMAIL_INCORRECT": "The email address is incorrect.",
+            "PASSWORD_INCORRECT": "Password is incorrect.",
+            "PERMISION_DENI": "Please active user before login.",
+            "LOGIN_ID_INCORRECT": "Login id is incorrect.",
+            "SOCIAL_ACCOUNT_NOT_REGISTER": "Social accounts not registered before."
+        },
+        "PROFILE": {
+            "UPDATE_PROFILE_SUCCESSFULLY": "I changed my profile.",
+            "CHANGE_PASSWORD_SUCCESSFULLY": "Password changed.",
+            "UPDATE_SETTING_SUCCESSFULLY": "Update setting successfully.",
+            "SAVE_OAUTH_SUCCESSFULLY": "oauth information has been saved."
+        },
+        "TWEET": {
+            "POST_TWEET_SUCCESSFULLY": "You posted tweet successfully.",
+            "POST_TWEET_UNSUCCESSFULLY": "You posted tweet unsuccessfully",
+            "REPLY_TWEET_SUCCESSFULLY": "You replied tweet successfully.",
+            "REPLY_TWEET_UNSUCCESSFULLY": "You replied tweet unsuccessfully.",
+            "LIKE_TWEET_SUCCESSFULLY": "You have liked tweet successfully.",
+            "LIKE_TWEET_UNSUCCESSFULLY": "You have liked tweet unsuccessfully.",
+            "UNLIKE_TWEET_SUCCESSFULLY": "You have unliked tweet successfully.",
+            "UNLIKE_TWEET_UNSUCCESSFULLY": "You have unliked tweet unsuccessfully.",
+            "RETWEET_SUCCESSFULLY": "You retweet successfully.",
+            "UN_RETWEET_SUCCESSFULLY": "You un retweet successfully.",
+            "TWEET_NOT_FOUND": "The tweet not found.",
+            "UPLOAD_MEDIA_UNSUCCESSFULLY": "Upload media unsuccessfully."
+        },
+        "VERIFY": {
+            "VERIFIED": "Account is already verified.",
+            "ACTIVED_USER_SUCCESSFULLY": "User activated successfully."
+        },
+        "FAVORITE": {
+            "CREATE_FAVORITE_SUCCESSFULLY": "Add comment to favorite list successfully.",
+            "FAVORITE_IS_EXIST": "You already favorited this tweet.",
+            "FAVORITE_NOT_FOUND": "Favorite not found.",
+            "UNFAVORITE_SUCCESSFULLY": "Unfavorite successfully"
+        },
+        "AUTH": {
+            "INVALID_ACCESS_TOKEN": "Invalid access token.",
+            "AUTHENTICATION_TOKEN_NOT_FOUND": "Authentication token not found.",
+            "USER_HAS_BEEN_BLOCKED": "Your account has been blocked."
+        },
+        "LOGOUT": {
+            "LOGOUT_SUCCESSFULLY": "Logout successfully."
+        }
+    },
+    "MAIL": {
+        "TITLE": {
+            "ACCOUNT_ACTIVATION": "Account Activation",
+            "VERIFY_CODE": "Verify code",
+            "RESET_PASSWORD": "Please Reset Your Password",
+            "REPLY_CONTACT": "Reply contact",
+            "CHANGE_PASSWORD": "Your password changed"
+        },
+        "FOOTER": {
+            "THANK_YOU": "Thank you for your continued support of Twitter.",
+            "QUESTION": "For other questions, please contact us from the inquiry form on the site.",
+            "FILESTAR_INC": "Twitter Systems Inc."
+        }
+    },
+    "ADMIN": {
+        "NOTIFICATION": {
+            "CREATE_NOTIFICATION_SUCCESSFULLY": "You have created notification successfully.",
+            "NOTIFICATION_NOT_FOUND": "The notification not found.",
+            "UPDATE_NOTIFICATION_SUCCESSFULLY": "You have updated notification information successfully.",
+            "DELETE_NOTIFICATION_SUCCESSFULLY": "You have deleted notification successfully."
+        },
+        "BLACKWORDLIST": {
+            "CREATE_BLACKWORDLIST_SUCCESSFULLY": "You have created black word list successfully.",
+            "BLACKWORDLIST_NOT_FOUND": "The black word list not found.",
+            "UPDATE_BLACKWORDLIST_SUCCESSFULLY": "You have updated black word list information successfully.",
+            "DELETE_BLACKWORDLIST_SUCCESSFULLY": "You have deleted black word list successfully.",
+            "BLACKWORDLIST_IS_EXIST": "Black word list existed."
+        },
+        "USER": {
+            "BLOCK_USER_SUCCESSFULLY": "You have successfully blocked the user."
+        }
+    },
+    "VALIDATE": {
+        "AUTHOR_ID_INVALID": "Author Id invalid format.",
+        "TWEET_ID_INVALID": "Tweet id invalid format.",
+        "CONVERSATION_ID_INVALID": "Conversation Id invalid format.",
+        "TEXT_INVALID": "Text invalid format.",
+        "CREATED_AT_INVALID": "Created at invalid format.",
+        "FIRST_NAME_EMPTY": "Your first name has not been entered.",
+        "LAST_NAME_EMPTY": "Your last name has not been entered.",
+        "EMAIL_EMPTY": "Email has not been entered.",
+        "ADDRESS_EMPTY": "Address has not been entered.",
+        "BIRTH_EMPTY": "The birth has not been entered.",
+        "PHONE_NUMBER_EMPTY": "Phone number has not been entered.",
+        "PASSWORD_EMPTY": "The password has not been entered.",
+        "SEX_EMPTY": "Gender has not been entered.",
+        "EMAIL_INVALID": "Email invalid format.",
+        "PASSWORD_INVALID": "Password invalid format."
+    }
+}

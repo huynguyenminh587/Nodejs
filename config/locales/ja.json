@@ -1,0 +1,119 @@
+{
+    "COMMON": {
+        "USER_EXIST": "ユーザーが存在していました。",
+        "CREATE_DATA_IS_SUCCESSFULLY": "データは正常に作成されました。",
+        "CREATE_DATA_IS_UNSUCCESSFULLY": "データの作成に失敗しました。",
+        "UPDATE_DATA_IS_SUCCESSFULLY": "登録が完了致しました。",
+        "UPDATE_DATA_IS_UNSUCCESSFULLY": "データの更新に失敗しました。",
+        "DELETE_DATA_IS_SUCCESSFULLY": "データの削除に成功しました。",
+        "DELETE_DATA_IS_UNSUCCESSFULLY": "データの削除に失敗しました。",
+        "RESTORE_DATA_IS_SUCCESSFULLY": "データの復元は正常に行われます。",
+        "DATA_NOT_AVAILABLE": "データはありません。",
+        "DATA_ALREADY_EXIST": "データはすでに存在します。",
+        "THE_SYSTEM_IS_FAIL": "システムに障害が発生しています。 また後で来てください。",
+        "THE_SYSTEM_WENT_WRONG": "申し訳ありませんが、問題が発生しました。 もう一度やり直すか、管理者に連絡してください。",
+        "USER_NOT_FOUND": "ユーザーが見つかりません。",
+        "EMAIL_IS_EXIST": "メールが存在します。",
+        "EMAIL_IS_NOT_EXIST": "電子メールは存在しません。"
+    },
+    "USER": {
+        "REGISTER": {
+            "SOCIAL_ID_NOT_EMPTY": "ソーシャルIDは空ではありません。",
+            "ACCOUNT_WAS_REGISTER_BEFORE": "アカウントは以前に登録されていました。"
+        },
+        "LOGIN": {
+            "EMAIL_INCORRECT": "メールアドレスが間違っています。",
+            "PASSWORD_INCORRECT": "パスワードが正しくありません。",
+            "PERMISION_DENI": "ログインする前にアクティブユーザーにしてください。",
+            "LOGIN_ID_INCORRECT": "ログインIDが正しくありません。",
+            "SOCIAL_ACCOUNT_NOT_REGISTER": "以前に登録されていないソーシャルアカウント。"
+        },
+        "PROFILE": {
+            "UPDATE_PROFILE_SUCCESSFULLY": "プロフィールを変更しました。",
+            "CHANGE_PASSWORD_SUCCESSFULLY": "パスワードを変更しました。",
+            "UPDATE_SETTING_SUCCESSFULLY": "設定を正常に更新します。",
+            "SAVE_OAUTH_SUCCESSFULLY": "oauth情報が保存されました。"
+        },
+        "TWEET": {
+            "POST_TWEET_SUCCESSFULLY": "あなたは正常にツイートを投稿しました。",
+            "POST_TWEET_UNSUCCESSFULLY": "あなたは失敗してツイートを投稿しました。",
+            "REPLY_TWEET_SUCCESSFULLY": "ツイートを正常に返信しました。",
+            "REPLY_TWEET_UNSUCCESSFULLY": "あなたはツイートに失敗した後に返信しました。",
+            "LIKE_TWEET_SUCCESSFULLY": "あなたは正常にツイートが好きでした。",
+            "LIKE_TWEET_UNSUCCESSFULLY": "あなたは失敗してツイートが好きだった。",
+            "UNLIKE_TWEET_SUCCESSFULLY": "あなたはうまくいったら。",
+            "UNLIKE_TWEET_UNSUCCESSFULLY": "あなたは失敗したところに戻ったままにされていません。",
+            "RETWEET_SUCCESSFULLY": "あなたは正常に戻ってきました。",
+            "UN_RETWEET_SUCCESSFULLY": "あなたは正常に戻ったら。",
+            "TWEET_NOT_FOUND": "ツイートが見つかりませんでした。",
+            "UPLOAD_MEDIA_UNSUCCESSFULLY": "メディアをアップロードしなくなりました。"
+        },
+        "VERIFY": {
+            "VERIFIED": "アカウントはすでに登録済みです。",
+            "ACTIVED_USER_SUCCESSFULLY": "ユーザーが承認されました。"
+        },
+        "FAVORITE": {
+            "CREATE_FAVORITE_SUCCESSFULLY": "お気に入りリストにコメントを正常に追加します。",
+            "FAVORITE_IS_EXIST": "あなたはすでにこのツイートを気に入っています。",
+            "FAVORITE_NOT_FOUND": "お気に入りが見つかりません。",
+            "UNFAVORITE_SUCCESSFULLY": "うまく嫌い。"
+        },
+        "AUTH": {
+            "INVALID_ACCESS_TOKEN": "無効なアクセストークン。",
+            "AUTHENTICATION_TOKEN_NOT_FOUND": "認証トークンが見つかりません。",
+            "USER_HAS_BEEN_BLOCKED": "アカウントがブロックされました。"
+        },
+        "LOGOUT": {
+            "LOGOUT_SUCCESSFULLY": "ログアウトに成功しました。"
+        }
+    },
+    "MAIL": {
+        "TITLE": {
+            "ACCOUNT_ACTIVATION": "アカウント開設",
+            "VERIFY_CODE": "コードを確認する",
+            "RESET_PASSWORD": "パスワードをリセットしてください",
+            "REPLY_CONTACT": "返信先",
+            "CHANGE_PASSWORD": "パスワードが変更されました"
+        },
+        "FOOTER": {
+            "THANK_YOU": "Twitterを引き続きご愛顧いただき、誠にありがとうございます。",
+            "QUESTION": "その他ご不明な点がございましたら、サイトのお問い合わせフォームよりお問い合わせください。",
+            "FILESTAR_INC": "Twitter TEAM."
+        }
+    },
+    "ADMIN": {
+        "NOTIFICATION": {
+            "CREATE_NOTIFICATION_SUCCESSFULLY": "あなたは正常に通知を作成しました。",
+            "NOTIFICATION_NOT_FOUND": "通知が見つかりませんでした。",
+            "UPDATE_NOTIFICATION_SUCCESSFULLY": "通知情報を正常に更新しました。",
+            "DELETE_NOTIFICATION_SUCCESSFULLY": "通知を正常に削除しました。"
+        },
+        "BLACKWORDLIST": {
+            "CREATE_BLACKWORDLIST_SUCCESSFULLY": "ブラックワードリストを正常に作成しました。",
+            "BLACKWORDLIST_NOT_FOUND": "ブラックワードリストが見つかりません。",
+            "UPDATE_BLACKWORDLIST_SUCCESSFULLY": "ブラックワードリスト情報を正常に更新しました。",
+            "DELETE_BLACKWORDLIST_SUCCESSFULLY": "ブラックワードリストを正常に削除しました。",
+            "BLACKWORDLIST_IS_EXIST": "ブラックワードリストが存在しました。"
+        },
+        "USER": {
+            "BLOCK_USER_SUCCESSFULLY": "ユーザーを正常にブロックしました。"
+        }
+    },
+    "VALIDATE": {
+        "AUTHOR_ID_INVALID": "著者IDの形式が無効です。",
+        "TWEET_ID_INVALID": "ツイートIDの形式が無効です。",
+        "CONVERSATION_ID_INVALID": "会話IDの形式が無効です。",
+        "TEXT_INVALID": "テキストの形式が無効です。",
+        "CREATED_AT_INVALID": "無効な形式で作成されました。",
+        "FIRST_NAME_EMPTY": "お名前(姓)が入力されていません。",
+        "LAST_NAME_EMPTY": "お名前(名)が入力されていません。",
+        "EMAIL_EMPTY": "メールアドレスが入力されていません。",
+        "ADDRESS_EMPTY": "住所が入力されていません。",
+        "BIRTH_EMPTY": "出生は入力されていません。",
+        "PHONE_NUMBER_EMPTY": "電話番号が入力されていません。",
+        "PASSWORD_EMPTY": "パスワードが入力されていません。",
+        "SEX_EMPTY": "性別が入力されていません。",
+        "EMAIL_INVALID": "無効な形式のメール。",
+        "PASSWORD_INVALID": "パスワードの形式が無効です。"
+    }
+}
