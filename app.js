@@ -58,7 +58,7 @@ i18n.configure({
     directory: `${__dirname}/config/locales`
 });
 
-const router = require('./routes/index')
+// const router = require('./routes/index')
 /**
 * =====================
 *  Config SocketIO
@@ -94,7 +94,8 @@ db.connect()
         //     res.send('Hello World')
         // })
 
-        app.use('/api/v1', router)
+        // app.use('/api/v1', router)
+        require('./routes/login_register')(app)
         server.listen(port, () => {
             console.log(chalk.red('Server api development running at'), ` http://:${port}/`);
             //    console.log(chalk.blue('Server socket development running at'), ` http://:${port}/`)

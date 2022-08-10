@@ -1,3 +1,4 @@
+//FILE NÀY ĐỂ DEFINE CÁC THUỘC TÍNH CỦA FIELD_NAME
 const { FIELD_NAME, USER } = require('../../helpers/constant.helper');
 
 function getSchema(DataTypes) {
@@ -8,6 +9,8 @@ function getSchema(DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
+
+
         [FIELD_NAME.FIRST_NAME]: {
             type: DataTypes.STRING
         },
@@ -65,6 +68,9 @@ function getSchema(DataTypes) {
     };
 }
 
+// console.log([FIELD_NAME.USER_ID])
+// console.log(typeof ([FIELD_NAME.USER_ID]))
+// console.log(typeof ([FIELD_NAME.FIRST_NAME]))
 module.exports = {
     getSchema
 }

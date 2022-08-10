@@ -1,3 +1,4 @@
+/**FILE NÀY GỒM CÁC PHƯƠNG THỨC CHỨA CÁC QUERY TRONG DATABASE */
 const Sequelize = require('sequelize');
 const db = require('../db')
 const { TABLE, FIELD_NAME, BOOLEAN_VALUE, PARAM, USER } = require('../../helpers/constant.helper');
@@ -150,7 +151,31 @@ class User extends Sequelize.Model {
             },
             ...option
         })
+
+
     }
+
+    /**
+     * @description get user by email
+     * @param {*} email
+     */
+
+    static getUserByEmail1(email, option) {
+        return User.findOne({
+            where: {
+                email
+            },
+            ...option
+        })
+    }
+
+
+
 }
+
+// console.log([FIELD_NAME.DEL_FLG])
+// console.log(typeof ([FIELD_NAME.DEL_FLG]))
+
+// User.getAdminByEmail('huy@gmail.com', 'huy')
 
 module.exports = User;
